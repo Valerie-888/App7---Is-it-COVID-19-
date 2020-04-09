@@ -16,7 +16,8 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-Create my own diagnostic app
+Create my own diagnostic app to determine whether someone could potentially have 
+COVID-19, flu, cold, or seasonal allergies
  
 Known Issues:
 None
@@ -36,6 +37,10 @@ None
     <script>
         var allergy_count = 0;
         var cold_count = 0;
+        var flu_count = 0;
+        var covid_count = 0;
+        //added variables for the functions that will count the answers from the questions.
+        //set them as zero
 
 
 
@@ -100,7 +105,6 @@ None
             <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered
                 a product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
             <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
-            <img src="data:image/jpeg; https://www.wmcactionnews5.com/resizer/LHzpsYiL5QTKdlKk9gT7kWDVGgE=/1200x600/arc-anglerfish-arc2-prod-raycom.s3.amazonaws.com/public/FKMIQUJHVVCPHGKVMLMAUTFFY4.png" alt="stress" width400 height400>
             <!-- added a image with code-->
 
             <div class="page" id="one">
@@ -110,136 +114,131 @@ None
 
                 <div id="content" class="w3-container">
                     <p>How long have you experienced your symptoms?</p>
-                    <a href="#two" class="w3-btn w3-black" onclick="allergyAdd();">Yes </a>
-                    <a href="#two" class="w3-btn w3-black" onclick="coldAdd();">No </a>
-                </div>
+                    <a href="#two" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();">Yes</a>
+                    <a href="#two" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldAdd();">No </a>
 
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="page" id="two">
+            <div class="w3-container w3-flat-turquoise">
+                <h1>Question 2</h1>
+            </div>
+
+            <div id="content" class="w3-container">
+                <p>Do you have a dry cough?</p>
+                <a href="#three" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();"> Yes </a>
+                <a href="#three" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldAdd();"> No </a>
             </div>
 
 
-            <div class="page" id="two">
-                <div class="w3-container w3-flat-carrot">
-                    <h1>Question 2</h1>
-                </div>
+        </div>
 
-                <div id="content" class="w3-container">
-                    <p>Do you have a dry cough?</p>
-                    <a href="#three" class="w3-btn w3-black" onclick="allergyAdd();"> Yes </a>
-                    <a href="#three" class="w3-btn w3-black" onclick="coldAdd();"> No </a>
-                </div>
 
+        <div class="page" id="three">
+            <div class="w3-container w3-flat-turquoise">
+                <h1>Question 3</h1>
+            </div>
+
+            <div id="content" class="w3-container">
+                <p>Do you often feel short of breath?</p>
+                <a href="#four" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();"> Yes </a>
+                <a href="#four" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldAdd();"> No </a>
 
             </div>
 
+        </div>
 
-            <div class="page" id="three">
-                <div class="w3-container w3-flat-carrot">
-                    <h1>Question 3</h1>
-                </div>
 
-                <div id="content" class="w3-container">
-                    <p>Do you often feel short of breath?</p>
-                    <a href="#four" class="w3-btn w3-black" onclick="allergyAdd();"> Yes </a>
-                    <a href="#four" class="w3-btn w3-black" onclick="coldAdd();"> No </a>
-
-                </div>
-
+        <div class="page" id="four">
+            <div class="w3-container w3-flat-turquoise">
+                <h1>Question 4</h1>
             </div>
 
+            <div id="content" class="w3-container">
+                <p> Do you tend to sneeze often?</p>
+                <a href="#five" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();"> Yes </a>
+                <a href="#five" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldAdd();"> No </a>
+            </div>
 
-            <div class="page" id="four">
-                <div class="w3-container w3-flat-carrot">
-                    <h1>Question 4</h1>
+            <div class="page" id="five">
+                <div class="w3-container w3-flat-turquoise">
+                    <h1>Question 5</h1>
                 </div>
-
                 <div id="content" class="w3-container">
-                    <p> Do you tend to sneeze often?</p>
-                    <a href="#five" class="w3-btn w3-black" onclick="allergyAdd();"> Yes </a>
-                    <a href="#five" class="w3-btn w3-black" onclick="coldAdd();"> No </a>
+                    <p>Do you tend to have a runny or stuffy nose</p>
+                    <a href="#six" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
+                    <a href="#six" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
                 </div>
 
-                <div class="page" id="five">
+                <div class="page" id="six">
                     <div class="w3-container w3-flat-turquoise">
-                        <h1>Question 5</h1>
+                        <h1>Question 6</h1>
                     </div>
                     <div id="content" class="w3-container">
-                        <p>Do you tend to have a runny or stuffy nose</p>
+                        <p>Do you have a sore throat?</p>
+                        <a href="#seven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
+                        <a href="#seven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
                     </div>
 
-                    <div class="page" id="six">
+                    <div class="page" id="seven">
                         <div class="w3-container w3-flat-turquoise">
-                            <h1>Question 6</h1>
+                            <h1>Question 7</h1>
                         </div>
                         <div id="content" class="w3-container">
-                            <p>Do you have a sore throat?</p>
+                            <p>Do you have a fever?</p>
+                            <a href="#eight" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
+                            <a href="#eight" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
                         </div>
 
-                        <div class="page" id="seven">
+                        <div class="page" id="eight">
                             <div class="w3-container w3-flat-turquoise">
-                                <h1>Question 7</h1>
+                                <h1>Question 8</h1>
                             </div>
                             <div id="content" class="w3-container">
-                                <p>Do you have a fever?</p>
+                                <p>Do you often feel tired or weak?</p>
+                                <a href="#nine" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
+                                <a href="#nine" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
                             </div>
 
-                            <div class="page" id="eight">
+                            <div class="page" id="nine">
                                 <div class="w3-container w3-flat-turquoise">
-                                    <h1>Question 8</h1>
+                                    <h1>Question 9</h1>
                                 </div>
                                 <div id="content" class="w3-container">
-                                    <p>Do you often feel tired or weak?</p>
+                                    <p>Do you often feel body aches or pains?</p>
+                                    <a href="#ten" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
+                                    <a href="#ten" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
                                 </div>
 
-                                <div class="page" id="nine">
+                                <div class="page" id="ten">
                                     <div class="w3-container w3-flat-turquoise">
-                                        <h1>Question 9/h1>
+                                        <h1>Question 10</h1>
                                     </div>
                                     <div id="content" class="w3-container">
                                         <p>Do you often experience heaedaches?</p>
+                                        <a href="#eleven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
+                                        <a href="#eleven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
                                     </div>
 
-                                    <div class="page" id="ten">
+                                    <div class="page" id="eleven">
                                         <div class="w3-container w3-flat-turquoise">
-                                            <h1>Question 10/h1>
+                                            <h1>Question 11</h1>
                                         </div>
                                         <div id="content" class="w3-container">
-                                            <p>Do you often experience heaedaches?</p>
+                                            <p>Do you have diarrhea?</p>
                                         </div>
 
-                                        <div class="page" id="eleven">
-                                            <div class="w3-container w3-flat-turquoise">
-                                                <h1>Question 11/h1>
-                                            </div>
-                                            <div id="content" class="w3-container">
-                                                <p>Do you have diarrhea?</p>
-                                            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                        </div>
                                     </div>
                                 </div>
-                                <footer class="w3-bottom w3-container w3-flat-turquoise">
-                                    <p>DIY!</p>
-                                    <!-- insert footer by adding DIY for every page pointed -->
-                                </footer>
+                            </div>
+                            <footer class="w3-bottom w3-container w3-flat-turquoise">
+                                <p>DIY!</p>
+                                <!-- insert footer by adding DIY for every page pointed -->
+                            </footer>
 
     </body>
 
