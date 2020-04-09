@@ -6,252 +6,245 @@ THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
  
  
 Authors in chronological order of contribution:
-Tim Riedel
 Valerie Foster
  
 Further Information:
-http://cns.utexas.edu/fri
- 
+http://diystream.cns.utexas.edu/
+
 Research Educator:
 Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-To create a diagnostic app by adding questions that calculate a result.
+Create my own diagnostic app
  
 Known Issues:
 None
-https://www.w3schools.com/w3css/default.asp
-https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
 
 <head>
-    <title>Hello World</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="w3-container w3-flat-carrot">
 
-</head>
-<!-- indicates what the header should say and how the website style will look-->
-
-<script>
-    var allergy_count = 0;
-    var cold_count = 0;
+    <head>
+        <title>Hello World</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="w3.css">
+        <link rel="stylesheet" href="w3-colors-flat.css">
+    </head>
 
 
-    function allergyAdd() {
-        allergy_count = allergy_count + 1;
-        alert("Allergy Count: " + allergy_count);
-    }
+    <script>
+        var allergy_count = 0;
+        var cold_count = 0;
 
-    function coldAdd() {
-        cold_count = cold_count + 1;
-        alert("Cold Count: " + cold_count);
-    }
 
-    function results() {
-        var resultText = document.getElementById("stressResults");
-        var total = allergy_count + cold_count;
-        var allergypercentage = (allergy_count / total) * 100;
-        var coldpercentage = (cold_count / total) * 100;
-        resultText.innerHTML = "Probability it is stress = " + allergypercentage + "%<br> Probability that it is not stress = " + coldpercentage;
-    }
-</script>
-<!-- added a function to calculate the results-->
-<!-- var total adds the results of the allergy and cold count-->
-<!-- created an alert that displayed the percentages of the results, like 
-using a mathematical formula where / means division and * means multiplication-->
-<!-- "\n" created another alert when viewing results-->
-<!-- {} needed to open and close the function-->
-<!-- semicolons are for ending the function-->
-<!-- print allergy and cold count-->
-<!-- updated results to change the alert page to show on the actual webstie page-->
 
-<style>
-    .body {
-        margin: 0em;
-    }
-    
-    .page {
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: -100vw;
-        overflow-y: auto;
-        z-index: 0;
-        background-color: hsl(0, 0%, 100%);
-    }
-    
-    .page:target {
-        left: 0vw;
-        z-index: 1;
-    }
-</style>
-<!-- described format of the page -->
+        function allergyAdd() {
+            allergy_count = allergy_count + 1;
 
-<body>
-    <div id="header" class="w3-container w3-flat-carrot">
-        <h1>Is it COVID-19?</h1>
-    </div>
+        }
 
-    <div id="content" class="w3-container">
-        <p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
+        function coldAdd() {
+            cold_count = cold_count + 1;
 
-        <a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+        }
 
-        <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered a
-            product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+        function results() {
+            var resultText = document.getElementById("stressResults");
+            var total = allergy_count + cold_count;
+            var allergypercentage = (allergy_count / total) * 100;
+            var coldpercentage = (cold_count / total) * 100;
+            resultText.innerHTML = "Probability it is stress = " + allergypercentage + "%<br> Probability that it is not stress = " + coldpercentage;
+        }
+    </script>
+    <!-- changed the output of the alerts pertaining to my app, whether someone is lactose intolerant or not-->
+    <!-- changed the results alert pertaining to lactose intolerance-->
 
-        <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
-        <!-- body of the first page, <p> is the output text of what will be shown on the page-->
+    <style>
+        .body {
+            margin: 0em;
+        }
+        
+        .page {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -100vw;
+            overflow-y: auto;
+            z-index: 0;
+            background-color: hsl(0, 0%, 100%);
+        }
+        
+        .page:target {
+            left: 0vw;
+            z-index: 1;
+        }
+        
+        img {
+            width: 50%;
+            height: 50%;
+            object-fit: contain;
+        }
+    </style>
+    <!-- added code that will resize the image, test it to make sure the dimensions are right-->
 
-        <div class="page" id="one">
-            <div id="header" class="w3-container w3-flat-carrot">
-                <h1>Question 1</h1>
-            </div>
-
-            <div id="content" class="w3-container">
-                <p>Are your eyes watery or itchy?</p>
-                <a href="#two" class="w3-btn w3-black" onclick="allergyAdd();">Yes </a>
-                <a href="#two" class="w3-btn w3-black" onclick="coldAdd();">No </a>
-            </div>
-
+    <body>
+        <div id="header" class="w3-container w3-flat-turquoise">
+            <h1>Is it COVID-19?</h1>
         </div>
+        <div id="content" class="w3-container">
+            <p> Are you experiencing symtoms that you can't figure out?</p>
 
-        <!-- add yes and no button to question 1 by typing class="w3-btn w3-black" -->
-        <!-- add a button to switch page with href="#two" -->
-        <!-- added question by typing in between <p> and </p> -->
-        <!-- added the button to coordinate if yes or no pertains to allergy and cold by 
-            by function onclick="coldadd();" or "allergyAdd();"-->
+            <a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+            <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered
+                a product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+            <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+            <img src="data:image/jpeg; https://www.wmcactionnews5.com/resizer/LHzpsYiL5QTKdlKk9gT7kWDVGgE=/1200x600/arc-anglerfish-arc2-prod-raycom.s3.amazonaws.com/public/FKMIQUJHVVCPHGKVMLMAUTFFY4.png" alt="stress" width400 height400>
+            <!-- added a image with code-->
 
-        <div class="page" id="two">
-            <div class="w3-container w3-flat-carrot">
-                <h1>Question 2</h1>
-            </div>
+            <div class="page" id="one">
+                <div id="header" class="w3-container w3-flat-turquoise">
+                    <h1>Question 1</h1>
+                </div>
 
-            <div id="content" class="w3-container">
-                <p>Do you have a fever?</p>
-                <a href="#three" class="w3-btn w3-black" onclick="coldAdd();"> Yes </a>
-                <a href="#three" class="w3-btn w3-black" onclick="allergyAdd();"> No </a>
-            </div>
-
-
-        </div>
-
-        <!-- add yes and no button to question 2 by typing class="w3-btn w3-black" -->
-        <!-- add a button to switch page with href="#three" -->
-        <!-- added question by typing in between <p> and </p> -->
-        <!-- added the button to coordinate if yes or no pertains to allergy and cold by 
-            by function onclick="coldadd();" or "allergyAdd();" with it-->
-
-        <div class="page" id="three">
-            <div class="w3-container w3-flat-carrot">
-                <h1>Question 3</h1>
-            </div>
-
-            <div id="content" class="w3-container">
-                <p>Do you have a sore throat?</p>
-                <a href="#four" class="w3-btn w3-black" onclick="coldAdd();"> Yes </a>
-                <a href="#four" class="w3-btn w3-black" onclick="allergyAdd();"> No </a>
+                <div id="content" class="w3-container">
+                    <p>How long have you experienced your symptoms?</p>
+                    <a href="#two" class="w3-btn w3-black" onclick="allergyAdd();">Yes </a>
+                    <a href="#two" class="w3-btn w3-black" onclick="coldAdd();">No </a>
+                </div>
 
             </div>
 
-            <!-- add yes and no button to question 3 by typing class="w3-btn w3-black" -->
-            <!-- add a button to switch page with href="#four" -->
-            <!-- added question by typing in between <p> and </p> -->
-            <!-- added the button to coordinate if yes or no pertains to allergy and cold by 
-                 by function onclick="coldadd();" or "allergyAdd();"-->
 
-        </div>
+            <div class="page" id="two">
+                <div class="w3-container w3-flat-carrot">
+                    <h1>Question 2</h1>
+                </div>
+
+                <div id="content" class="w3-container">
+                    <p>Do you have a dry cough?</p>
+                    <a href="#three" class="w3-btn w3-black" onclick="allergyAdd();"> Yes </a>
+                    <a href="#three" class="w3-btn w3-black" onclick="coldAdd();"> No </a>
+                </div>
 
 
-        <div class="page" id="four">
-            <div class="w3-container w3-flat-carrot">
-                <h1>Question 4</h1>
             </div>
 
-            <div id="content" class="w3-container">
-                <p>Are your symptoms seasonal or chronic?</p>
-                <a href="#five" class="w3-btn w3-black" onclick="allergyAdd();"> Yes </a>
-                <a href="#five" class="w3-btn w3-black" onclick="coldAdd();"> No </a>
+
+            <div class="page" id="three">
+                <div class="w3-container w3-flat-carrot">
+                    <h1>Question 3</h1>
+                </div>
+
+                <div id="content" class="w3-container">
+                    <p>Do you often feel short of breath?</p>
+                    <a href="#four" class="w3-btn w3-black" onclick="allergyAdd();"> Yes </a>
+                    <a href="#four" class="w3-btn w3-black" onclick="coldAdd();"> No </a>
+
+                </div>
+
             </div>
 
-            <!-- add yes and no button to question 4 by typing class="w3-btn w3-black" -->
-            <!-- add a button to switch page with href="#five" -->
-            <!-- added question by typing in between <p> and </p> -->
-            <!-- added the button to coordinate if yes or no pertains to allergy and cold by 
-                 by function onclick="coldadd();" or "allergyAdd();"-->
 
-        </div>
-        <div class="page" id="five">
-            <div class="w3-container w3-flat-carrot">
-                <h1>Question 5</h1>
-            </div>
+            <div class="page" id="four">
+                <div class="w3-container w3-flat-carrot">
+                    <h1>Question 4</h1>
+                </div>
 
-            <div id="content" class="w3-container">
-                <p>Do your symptoms happen all at once or one at a time?</p>
-                <a href="#six" class="w3-btn w3-black" onclick="allergyAdd();"> Yes </a>
-                <a href="#six" class="w3-btn w3-black" onclick="coldAdd();"> No </a>
-            </div>
+                <div id="content" class="w3-container">
+                    <p> Do you tend to sneeze often?</p>
+                    <a href="#five" class="w3-btn w3-black" onclick="allergyAdd();"> Yes </a>
+                    <a href="#five" class="w3-btn w3-black" onclick="coldAdd();"> No </a>
+                </div>
 
-            <!-- added div to create a new page and identified it as five-->
-            <!-- entered header and titled between <h1> and <h/h1>-->
-            <!-- added <div id="content" do create the body of the page-->
-            <!-- add yes and no button to question 5 by typing class="w3-btn w3-black" -->
-            <!-- add a button to switch page with href="#six" -->
-            <!-- added question by typing in between <p> and </p> -->
-            <!-- added the button to coordinate if yes or no pertains to allergy and cold by 
-                 by function onclick="coldadd();" or "allergyAdd();"-->
+                <div class="page" id="five">
+                    <div class="w3-container w3-flat-turquoise">
+                        <h1>Question 5</h1>
+                    </div>
+                    <div id="content" class="w3-container">
+                        <p>Do you tend to have a runny or stuffy nose</p>
+                    </div>
 
-        </div>
-        <div class="page" id="six">
-            <div class="w3-container w3-flat-carrot">
-                <h1>Question 6</h1>
-            </div>
+                    <div class="page" id="six">
+                        <div class="w3-container w3-flat-turquoise">
+                            <h1>Question 6</h1>
+                        </div>
+                        <div id="content" class="w3-container">
+                            <p>Do you have a sore throat?</p>
+                        </div>
 
-            <div id="content" class="w3-container">
-                <p>Do you have muscle aches?</p>
-                <a href="#results" class="w3-btn w3-black" onclick="coldAdd();"> Yes </a>
-                <a href="#results" class="w3-btn w3-black" onclick="allergyAdd();"> No </a>
-            </div>
+                        <div class="page" id="seven">
+                            <div class="w3-container w3-flat-turquoise">
+                                <h1>Question 7</h1>
+                            </div>
+                            <div id="content" class="w3-container">
+                                <p>Do you have a fever?</p>
+                            </div>
 
-            <!-- added div to create a new page and identified it as six-->
-            <!-- entered header and titled between <h1> and <h/h1>-->
-            <!-- added <div id="content" do create the body of the page-->
-            <!-- add yes and no button to question 6 by typing class="w3-btn w3-black" -->
-            <!-- add a button to switch page with href="#seven" -->
-            <!-- added question by typing in between <p> and </p> -->
-            <!-- added the button to coordinate if yes or no pertains to allergy and cold by 
-                by function onclick="coldadd();" or "allergyAdd();"-->
+                            <div class="page" id="eight">
+                                <div class="w3-container w3-flat-turquoise">
+                                    <h1>Question 8</h1>
+                                </div>
+                                <div id="content" class="w3-container">
+                                    <p>Do you often feel tired or weak?</p>
+                                </div>
 
-        </div>
-        <div class="page" id="results">
-            <div class="w3-container w3-flat-carrot">
-                <h1>Results</h1>
-            </div>
+                                <div class="page" id="nine">
+                                    <div class="w3-container w3-flat-turquoise">
+                                        <h1>Question 9/h1>
+                                    </div>
+                                    <div id="content" class="w3-container">
+                                        <p>Do you often experience heaedaches?</p>
+                                    </div>
 
-            <!-- added div to create a new page and identified it as seven-->
-            <!-- entered header and titled between <h1> and <h/h1>-->
-            <!-- added <div id="content" do create the body of the page-->
-            <!-- add yes and no button to question 7 by typing class="w3-btn w3-black" -->
-            <!-- add a button to switch page with href="#seven" -->
-            <!-- added question by typing in between <p> and </p> -->
-            <!-- added the button to coordinate if yes or no pertains to allergy and cold by 
-                 by function onclick="coldadd();" or "allergyAdd();"-->
+                                    <div class="page" id="ten">
+                                        <div class="w3-container w3-flat-turquoise">
+                                            <h1>Question 10/h1>
+                                        </div>
+                                        <div id="content" class="w3-container">
+                                            <p>Do you often experience heaedaches?</p>
+                                        </div>
 
-            <div id="content" class="w3-container">
-                <p>Results</p>
-                <a class="w3-btn w3-black" onclick="results();"> View Results </a>
-                <p id="stressResults"></p>
-            </div>
-            <!-- this page shows the results by adding a button labeled View Results, and then the onclick button results is the function that calculated the results-->
-        </div>
-    </div>
-    <footer class="w3-bottom w3-container w3-flat-carrot">
-        <p>DIY!</p>
-    </footer>
-    <!-- this is the footer for every page format to say DIY at the end and have a orange at the bottom-->
+                                        <div class="page" id="eleven">
+                                            <div class="w3-container w3-flat-turquoise">
+                                                <h1>Question 11/h1>
+                                            </div>
+                                            <div id="content" class="w3-container">
+                                                <p>Do you have diarrhea?</p>
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <footer class="w3-bottom w3-container w3-flat-turquoise">
+                                    <p>DIY!</p>
+                                    <!-- insert footer by adding DIY for every page pointed -->
+                                </footer>
+
+    </body>
+
+</html>
+
 </body>
 
 </html>
