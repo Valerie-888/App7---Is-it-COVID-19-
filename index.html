@@ -54,12 +54,38 @@ None
 
         }
 
-        function results() {
-            var resultText = document.getElementById("stressResults");
-            var total = allergy_count + cold_count;
-            var allergypercentage = (allergy_count / total) * 100;
-            var coldpercentage = (cold_count / total) * 100;
-            resultText.innerHTML = "Probability it is stress = " + allergypercentage + "%<br> Probability that it is not stress = " + coldpercentage;
+        function fluAdd() {
+
+            flu_count = flu_count + 1;
+
+        }
+
+        function covidAdd() {
+            covid_count = covid_count + 1;
+        }
+
+        function coldflucovidAdd() {
+            coldflucovid_count = cold_count + flu_count + covid_count + 1;
+        }
+
+        function coldallergyfluAdd() {
+            coldallergyflu_count = cold_count + allergy_count + flu_count + 1;
+        }
+
+        function allergycoldAdd() {
+            allergycold_count = allergy_count + cold_count + 1;
+        }
+
+        function covidfluAdd() {
+            covidflu_count = covid_count + flu_count + 1;
+        }
+
+        function allergycoldfluAdd() {
+            allergycoldflu_count = allergy_count + cold_count + flu_count + 1;
+        }
+
+        function allergycoldflucovidAdd() {
+            allergycoldflucovid_count = allergy_count + cold_count + flu_count + covid_count + 1;
         }
     </script>
     <!-- changed the output of the alerts pertaining to my app, whether someone is lactose intolerant or not-->
@@ -101,7 +127,7 @@ None
         <div id="content" class="w3-container">
             <p> Are you experiencing symtoms that you can't figure out?</p>
 
-            <a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a>
+            <a href="#one" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple"> Get Started </a>
             <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered
                 a product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
             <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
@@ -113,9 +139,9 @@ None
                 </div>
 
                 <div id="content" class="w3-container">
-                    <p>How long have you experienced your symptoms?</p>
+                    <p>Are your symptoms long lasting?</p>
                     <a href="#two" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();">Yes</a>
-                    <a href="#two" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldAdd();">No </a>
+                    <a href="#two" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldflucovidAdd();">No</a>
 
                 </div>
             </div>
@@ -130,8 +156,8 @@ None
 
             <div id="content" class="w3-container">
                 <p>Do you have a dry cough?</p>
-                <a href="#three" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();"> Yes </a>
-                <a href="#three" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldAdd();"> No </a>
+                <a href="#three" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldflucovidAdd()"> Yes</a>
+                <a href="#three" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();"> No </a>
             </div>
 
 
@@ -145,8 +171,8 @@ None
 
             <div id="content" class="w3-container">
                 <p>Do you often feel short of breath?</p>
-                <a href="#four" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();"> Yes </a>
-                <a href="#four" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldAdd();"> No </a>
+                <a href="#four" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="covidAdd();"> Yes </a>
+                <a href="#four" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldallergyfluAdd();"> No </a>
 
             </div>
 
@@ -160,8 +186,8 @@ None
 
             <div id="content" class="w3-container">
                 <p> Do you tend to sneeze often?</p>
-                <a href="#five" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();"> Yes </a>
-                <a href="#five" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldAdd();"> No </a>
+                <a href="#five" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergycoldAdd()"> Yes </a>
+                <a href="#five" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="covidfluAdd();"> No </a>
             </div>
 
             <div class="page" id="five">
@@ -170,8 +196,8 @@ None
                 </div>
                 <div id="content" class="w3-container">
                     <p>Do you tend to have a runny or stuffy nose</p>
-                    <a href="#six" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
-                    <a href="#six" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
+                    <a href="#six" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergycoldfluAdd();">Yes</a>
+                    <a href="#six" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="covidAdd();">No</a>
                 </div>
 
                 <div class="page" id="six">
@@ -180,7 +206,7 @@ None
                     </div>
                     <div id="content" class="w3-container">
                         <p>Do you have a sore throat?</p>
-                        <a href="#seven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
+                        <a href="#seven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergycoldflucovidAdd();">Yes</a>
                         <a href="#seven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
                     </div>
 
@@ -190,8 +216,8 @@ None
                         </div>
                         <div id="content" class="w3-container">
                             <p>Do you have a fever?</p>
-                            <a href="#eight" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
-                            <a href="#eight" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
+                            <a href="#eight" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldflucovidAdd();">Yes</a>
+                            <a href="#eight" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();">No</a>
                         </div>
 
                         <div class="page" id="eight">
@@ -200,7 +226,7 @@ None
                             </div>
                             <div id="content" class="w3-container">
                                 <p>Do you often feel tired or weak?</p>
-                                <a href="#nine" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
+                                <a href="#nine" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergycoldflucovidAdd();">Yes</a>
                                 <a href="#nine" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
                             </div>
 
@@ -211,7 +237,8 @@ None
                                 <div id="content" class="w3-container">
                                     <p>Do you often feel body aches or pains?</p>
                                     <a href="#ten" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
-                                    <a href="#ten" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
+                                    <!--corona, flu, and cold-->
+                                    <a href="#ten" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();">No</a>
                                 </div>
 
                                 <div class="page" id="ten">
@@ -220,8 +247,8 @@ None
                                     </div>
                                     <div id="content" class="w3-container">
                                         <p>Do you often experience heaedaches?</p>
-                                        <a href="#eleven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">Yes</a>
-                                        <a href="#eleven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
+                                        <a href="#eleven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldflucovidAdd();">Yes</a>
+                                        <a href="#eleven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldAdd();">No</a>
                                     </div>
 
                                     <div class="page" id="eleven">
@@ -230,15 +257,35 @@ None
                                         </div>
                                         <div id="content" class="w3-container">
                                             <p>Do you have diarrhea?</p>
+                                            <a href="#results" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="covidfluAdd();">Yes</a>
+                                            <a href="#results" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldallergyfluAdd();">No</a>
                                         </div>
 
+                                        <div class="page" id="results">
+                                            <div class="w3-container w3-flat-turquoise">
+                                                <h1>Results</h1>
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <footer class="w3-bottom w3-container w3-flat-turquoise">
-                                <p>DIY!</p>
-                                <!-- insert footer by adding DIY for every page pointed -->
-                            </footer>
+
 
     </body>
 
