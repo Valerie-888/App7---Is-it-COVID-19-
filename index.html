@@ -33,7 +33,7 @@ None
         <link rel="stylesheet" href="w3-colors-flat.css">
     </head>
     <!-- this creates the style and design of the website-->
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script>
         var allergy_count = 0;
         var cold_count = 0;
@@ -41,7 +41,6 @@ None
         var covid_count = 0;
         //added variables for the functions that will count the answers from the questions.
         //set them as zero
-
 
         function allergyAdd() {
             allergy_count = allergy_count + 1;
@@ -64,136 +63,82 @@ None
         }
 
         function coldflucovidAdd() {
-            coldflucovid_count = cold_count + flu_count + covid_count + 1;
+            cold_count += 1;
+            flu_count += 1;
+            covid_count += 1;
+
         }
 
         function coldallergyfluAdd() {
-            coldallergyflu_count = cold_count + allergy_count + flu_count + 1;
+            cold_count += 1;
+            flu_count += 1;
         }
 
         function allergycoldAdd() {
-            allergycold_count = allergy_count + cold_count + 1;
+            allergy_count += 1;
+            cold_count += 1;
         }
 
         function covidfluAdd() {
-            covidflu_count = covid_count + flu_count + 1;
+            covid_count += 1;
+            flu_count += 1;
         }
 
         function allergycoldfluAdd() {
-            allergycoldflu_count = allergy_count + cold_count + flu_count + 1;
+            allergy_count += 1;
+            cold_count += 1;
+            flu_count += 1;
         }
 
         function allergycoldflucovidAdd() {
-            allergycoldflucovid_count = allergy_count + cold_count + flu_count + covid_count + 1;
+            allergy_count += 1;
+            cold_count += 1;
+            flu_count += 1;
+            covid_count += 1
         }
 
         function allergyflucovidAdd() {
             allergyflucovidAdd_count = allergy_count + flu_count + covid_count + 1;
         }
 
-        function drawLine(val_context, startX = 0, startY = 0, endX = 20, endY = 11, black) {
-            var val_canvas = document.getElementById("val"); // copied from line 43 to identify canvas for each function 
-            var val_context = val_canvas.getContext("2d"); // added variable to get to the context method recognizing it's 2D
-            val_context.save(); // this is to not affect the colors used outside the function
-            val_context.strokeStyle = black; //modifies color settings
-            val_context.beginPath(); // this begins drawing the line
-            val_context.moveTo(startX = 0, startY = 0); //starting point of the graph
-            val_context.lineTo(endX = 20, endY = 11); // ending points on the graph
-            val_context.stroke(); // this will draw on the graph
-            val_context.restore(); //same idea as the ctx.save which will not affect the colors used outside this function
-        }
-        // this function is created to create the lines for the grid lines
-        function drawBar(val_context, upperLeftCornerX = 0, upperLeftCornerY = 0, width = 5, allergy_count, blue) {
-            val_context.save();
-            val_context.fillStyle = blue;
-            val_context.fillRect(upperLeftCornerX = 0, upperLeftCornerY = 0, width = 5, allergy_count);
-            val_context.restore();
-        }
-
-        var myAnswers = {
+        function showResults() {
+            var myAnswers = {
                 "Allergies": allergy_count,
                 "Flu": flu_count,
                 "COVID-19": covid_count,
                 "Cold": cold_count
             }
-            // this creates a variable that has a bar chart data model to represent the answers of the survey
+            console.log(myAnswers);
+            var ctx = document.getElementById('val').getContext('2d');
+            var val_chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
 
-        var Barchart = function(options) {
-            this.options = options;
-            this.canvas = options.canvas;
-            this.ctx = this.canvas.getContext("2d");
-            this.colors = options.colors;
+                // The data for our dataset
+                data: {
+                    labels: ['Allergies', 'Flu', 'COVID-19', 'Cold'],
+                    datasets: [{
+                        label: 'Data',
 
-            // storing the options as the paramteters
-            //this will store the canvas reference
-            // stores the colors
+                        data: [allergy_count, flu_count, covid_count, cold_count]
+                    }]
+                },
 
-            this.draw = function() {
-                var maxValue = 0;
-                for (var categ in this.options.data) {
-                    maxValue = Math.max(maxValue, this.options.data[categ]);
+
+                // Configuration options go here
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
                 }
-                // this will draw the chart by drawing the grid lines, grid markers, and the bars using the parameters from the options
-                var canvasActualHeight = this.canvas.height - this.options.padding * 2;
-                var canvasActualWidth = this.canvas.width - this.options.padding * 2;
-                // this stores the height and width of the canvas based on the values from the options
-                // padding mean the number of pixels between the edge of the canvas and the chart inside
-                var gridValue = 0;
-                while (gridValue <= maxValue) {
-                    var gridY = canvasActualHeight * (1 - gridValue / maxValue) + this.options.padding;
-                    drawLine(
-                        this.ctx,
-                        0,
-                        gridY,
-                        this.canvas.width,
-                        gridY,
-                        this.options.gridColor
-                    );
-                    //this gives the step used for drawing the lines of the graph
-                    //writing grid markers
-                    this.ctx.save();
-                    this.ctx.fillStyle = this.options.gridColor;
-                    this.ctx.font = "bold 10px Arial";
-                    this.ctx.fillText(gridValue, 10, gridY - 2); // draw the value of the grid line 2 pixels above the grid line
-                    this.ctx.restore();
-
-                    gridValue += this.options.gridScale;
-                }
-                //drawing the bars
-                // this will tell it to fill the bar: the style and font.
-                var barIndex = 0;
-                var numberOfBars = Object.keys(this.options.data).length;
-                var barSize = (canvasActualWidth) / numberOfBars;
-
-                for (categ in this.options.data) {
-                    var val = this.options.data[categ];
-                    var barHeight = Math.round(canvasActualHeight * val / maxValue);
-                    drawBar(
-                        this.ctx,
-                        this.options.padding + barIndex * barSize,
-                        this.canvas.height - barHeight - this.options.padding,
-                        barSize,
-                        barHeight,
-                        this.colors[barIndex % this.colors.length]
-                    );
-                    //this contains the math for calculating the height and width of each bar
-                    //this takes account into the padding and the value and color for each bar in the chart data model
-                    barIndex++;
-                }
-
-            }
+            })
         }
-
-        var myBarchart = new Barchart({
-            canvas: myCanvas,
-            padding: 10,
-            gridScale: 5,
-            gridColor: "#eeeeee",
-            data: myVinyls,
-            colors: ["#a55ca5", "#67b6c7", "#bccd7a", "#eb9743"]
-        });
-        myBarchart.draw();
     </script>
+
     <!-- changed the output of the alerts pertaining to my app, whether someone is lactose intolerant or not-->
     <!-- changed the results alert pertaining to lactose intolerance-->
 
@@ -372,24 +317,9 @@ None
                                             </div>
                                             <div id="content" class="w3-container">
                                                 <canvas id="val" width="600" height="600" style="border:1px solid #000000;"></canvas>
-                                                <a class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="drawLine();">Results</a>
+                                                <a class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="showResults();">Results</a>
                                                 <p> </p>
                                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
