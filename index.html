@@ -46,70 +46,73 @@ None
             allergy_count = allergy_count + 1;
 
         }
-
+        // function to add allergy count from survey
         function coldAdd() {
             cold_count = cold_count + 1;
 
         }
-
+        // function to add cold count from survey
         function fluAdd() {
 
             flu_count = flu_count + 1;
 
         }
-
+        //function to add flu count from survey
         function covidAdd() {
             covid_count = covid_count + 1;
         }
-
+        //function to add COVID-19 count from survey
         function coldflucovidAdd() {
             cold_count += 1;
             flu_count += 1;
             covid_count += 1;
 
         }
-
+        //function to count multiple diagnoses
         function coldallergyfluAdd() {
             cold_count += 1;
             flu_count += 1;
         }
-
+        //function to count multiple diagnoses
         function allergycoldAdd() {
             allergy_count += 1;
             cold_count += 1;
         }
-
+        //function to count multiple diagnoses
         function covidfluAdd() {
             covid_count += 1;
             flu_count += 1;
         }
-
+        //function to count multiple diagnoses
         function allergycoldfluAdd() {
             allergy_count += 1;
             cold_count += 1;
             flu_count += 1;
         }
-
+        //function to count multiple diagnoses
         function allergycoldflucovidAdd() {
             allergy_count += 1;
             cold_count += 1;
             flu_count += 1;
             covid_count += 1
         }
-
+        //function to count multiple diagnoses
         function allergyflucovidAdd() {
-            allergyflucovidAdd_count = allergy_count + flu_count + covid_count + 1;
+            allergy_count += 1;
+            flu_count += 1;
+            covid_count += 1;
         }
-
+        //function to count multiple diagnoses
         function showResults() {
             var myAnswers = {
-                "Allergies": allergy_count,
-                "Flu": flu_count,
-                "COVID-19": covid_count,
-                "Cold": cold_count
-            }
-            console.log(myAnswers);
-            var ctx = document.getElementById('val').getContext('2d');
+                    "Allergies": allergy_count,
+                    "Flu": flu_count,
+                    "COVID-19": covid_count,
+                    "Cold": cold_count
+                }
+                // created a variable to show results for all answers
+            console.log(myAnswers); //input this variable into the chart
+            var ctx = document.getElementById('val').getContext('2d'); //identifies my canvas, and puts it's in 2d, so the chart know  where it should be drawn
             var val_chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'bar',
@@ -162,37 +165,36 @@ None
             left: 0vw;
             z-index: 1;
         }
-        
-        img {
-            width: 50%;
-            height: 50%;
-            object-fit: contain;
-        }
     </style>
-    <!-- added code that will resize the image, test it to make sure the dimensions are right-->
+    <!-- This part of this code sets up the page setup of the website-->
 
     <body>
         <div id="header" class="w3-container w3-flat-turquoise">
             <h1>Is it COVID-19?</h1>
         </div>
+        <!--this creates a header on the page and then I designed it to be turquoise.-->
+        <!-- then I can write what I want in the header-->
         <div id="content" class="w3-container">
             <p> Are you experiencing symtoms that you can't figure out?</p>
-
+            <!-- this is the content of the page, and then I set up the style of the page-->
+            <!-- I can also write the questions I want-->
             <a href="#one" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple"> Get Started </a>
+            <!-- created a button that when pressed, it will go to the next page-->
             <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered
                 a product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
             <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
-
+            <!-- this puts words projected on the website-->
             <div class="page" id="one">
                 <div id="header" class="w3-container w3-flat-turquoise">
                     <h1>Question 1</h1>
                 </div>
-
+                <!-- this identifies the page, and then it adds a header with a title-->
                 <div id="content" class="w3-container">
                     <p>Are your symptoms long lasting?</p>
                     <a href="#two" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();">Yes</a>
                     <a href="#two" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldflucovidAdd();">No</a>
-
+                    <!-- created a button with yes and no-->
+                    <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
                 </div>
             </div>
 
@@ -209,7 +211,8 @@ None
                 <a href="#three" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldflucovidAdd()"> Yes</a>
                 <a href="#three" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();"> No </a>
             </div>
-
+            <!-- created a button with yes and no-->
+            <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
 
         </div>
 
@@ -225,7 +228,8 @@ None
                 <a href="#four" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldallergyfluAdd();"> No </a>
 
             </div>
-
+            <!-- created a button with yes and no-->
+            <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
         </div>
 
 
@@ -233,13 +237,15 @@ None
             <div class="w3-container w3-flat-turquoise">
                 <h1>Question 4</h1>
             </div>
-
+            <!-- created a button with yes and no-->
+            <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
             <div id="content" class="w3-container">
                 <p> Do you tend to sneeze often?</p>
                 <a href="#five" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergycoldAdd()"> Yes </a>
                 <a href="#five" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="covidfluAdd();"> No </a>
             </div>
-
+            <!-- created a button with yes and no-->
+            <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
             <div class="page" id="five">
                 <div class="w3-container w3-flat-turquoise">
                     <h1>Question 5</h1>
@@ -249,7 +255,8 @@ None
                     <a href="#six" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergycoldfluAdd();">Yes</a>
                     <a href="#six" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="covidAdd();">No</a>
                 </div>
-
+                <!-- created a button with yes and no-->
+                <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
                 <div class="page" id="six">
                     <div class="w3-container w3-flat-turquoise">
                         <h1>Question 6</h1>
@@ -259,7 +266,8 @@ None
                         <a href="#seven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergycoldflucovidAdd();">Yes</a>
                         <a href="#seven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
                     </div>
-
+                    <!-- created a button with yes and no-->
+                    <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
                     <div class="page" id="seven">
                         <div class="w3-container w3-flat-turquoise">
                             <h1>Question 7</h1>
@@ -269,7 +277,8 @@ None
                             <a href="#eight" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldflucovidAdd();">Yes</a>
                             <a href="#eight" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();">No</a>
                         </div>
-
+                        <!-- created a button with yes and no-->
+                        <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
                         <div class="page" id="eight">
                             <div class="w3-container w3-flat-turquoise">
                                 <h1>Question 8</h1>
@@ -279,7 +288,8 @@ None
                                 <a href="#nine" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergycoldflucovidAdd();">Yes</a>
                                 <a href="#nine" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple">No</a>
                             </div>
-
+                            <!-- created a button with yes and no-->
+                            <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
                             <div class="page" id="nine">
                                 <div class="w3-container w3-flat-turquoise">
                                     <h1>Question 9</h1>
@@ -287,20 +297,21 @@ None
                                 <div id="content" class="w3-container">
                                     <p>Do you often feel body aches or pains?</p>
                                     <a href="#ten" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldflucovidAdd();">Yes</a>
-
                                     <a href="#ten" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyAdd();">No</a>
                                 </div>
-
+                                <!-- created a button with yes and no-->
+                                <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
                                 <div class="page" id="ten">
                                     <div class="w3-container w3-flat-turquoise">
                                         <h1>Question 10</h1>
                                     </div>
                                     <div id="content" class="w3-container">
-                                        <p>Do you often experience heaedaches?</p>
+                                        <p>Do you often experience headaches?</p>
                                         <a href="#eleven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="allergyflucovidAdd();">Yes</a>
                                         <a href="#eleven" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldAdd();">No</a>
                                     </div>
-
+                                    <!-- created a button with yes and no-->
+                                    <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
                                     <div class="page" id="eleven">
                                         <div class="w3-container w3-flat-turquoise">
                                             <h1>Question 11</h1>
@@ -310,16 +321,21 @@ None
                                             <a href="#results" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="covidfluAdd();">Yes</a>
                                             <a href="#results" class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="coldallergyfluAdd();">No</a>
                                         </div>
-
+                                        <!-- created a button with yes and no-->
+                                        <!-- when the button is pressed, it will mark by the onclick button whether it will add to allergies, cold, flu, or COVID-19-->
                                         <div class="page" id="results">
                                             <div class="w3-container w3-flat-turquoise">
                                                 <h1>Results</h1>
                                             </div>
                                             <div id="content" class="w3-container">
                                                 <canvas id="val" width="600" height="600" style="border:1px solid #000000;"></canvas>
+                                                <!-- created a canvas with dimensions and created an ID-->
                                                 <a class="w3-btn w3-green w3-border w3-hover-blue w3-ripple" onclick="showResults();">Results</a>
-                                                <p> </p>
+                                                <!-- this is a button that when it is clicked, it will show the bar chart as it is redirected to my variable-->
                                             </div>
+
+
+
 
 
 
